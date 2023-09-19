@@ -1237,20 +1237,20 @@ const data =
         }];
 
 return (
-    <div>
+    <div className="flex flex-col align-center">
     {data &&
         data.map((item, i) => (
           <div key={i} className="mb-4">
-            <p className="text-lg">{item.name}</p>
-            <div className="flex">
+            <p className="text-lg text-black">{item.name}</p>
+            <div className="flex flex-wrap">
                 {item.parameters &&
                     item.parameters.map((parameter, i) => (
-                    <div key={i} className="px-4 py-5 flex-initial mr-4 rounded-lg bg-slate-50">
+                    <div key={i} className="px-4 py-5 flex-initial mr-4 rounded-lg bg-slate-50 mb-2">
                         <ul>
-                            <li>name: {parameter.name} </li>
-                            <li>description: {parameter.description}</li>
-                            <li>optional: {parameter.optional != undefined ? "FALSE" : parameter.optional ? "TRUE" : "FALSE"}</li>
-                            <li>type: {parameter.type}</li>
+                            <li className="text-black">name: {parameter.name} </li>
+                            <li className="text-black">description: {parameter.description}</li>
+                            <li className="text-black">optional: {parameter.optional != undefined ? "FALSE" : parameter.optional ? "TRUE" : "FALSE"}</li>
+                            <li className="text-black">type: {parameter.type}</li>
                         </ul>
                     </div>
                     ))
