@@ -1,13 +1,22 @@
+"use client";
 import Image from 'next/image'
 import FunctionList from './functionList'
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 export default function Home({allPostsData} : any) {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between py-24 px-5">
-      
+  
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
+  return (
+    <ThemeProvider theme={darkTheme}>
+    <main className="flex min-h-screen flex-col items-center py-24 px-5">
       <div className="relative flex place-items-center z-[-1]">
         <Image
-          className="relative dark:invert"
+          className="relative invert"
           src="/EVE_online_logo.svg"
           alt="EVE Excel Logo"
           width={180}
@@ -21,10 +30,14 @@ export default function Home({allPostsData} : any) {
         </p>
         <br></br>
         <p>
-          CTRL+F to find the function you are looking for
+          CTRL+F or use the autocomplete below
+        </p>
+        <p className="mobileOnly">
+          Sorry this page is not optimized for mobile.
         </p>
       </div>
       <FunctionList />
     </main>
+    </ThemeProvider>
   )
 }
