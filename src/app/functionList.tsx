@@ -195,7 +195,7 @@ let data = [
                 "type": "any"
             },
             {
-                "description": "Page of results to display (1000 per page)",
+                "description": "Page of results to display (200 per page)",
                 "name": "page",
                 "optional": true,
                 "type": "number"
@@ -229,7 +229,7 @@ let data = [
                 "type": "any"
             },
             {
-                "description": "Page of results to display (500 per page)",
+                "description": "Page of results to display (200 per page)",
                 "name": "page",
                 "optional": true,
                 "type": "number"
@@ -425,7 +425,7 @@ let data = [
                 "type": "any"
             },
             {
-                "description": "Page of results to return (1000 per page)",
+                "description": "Page of results to return (500 per page)",
                 "name": "page",
                 "optional": true,
                 "type": "number"
@@ -453,7 +453,7 @@ let data = [
                 "type": "string"
             },
             {
-                "description": "Page of results to display (1000 per page)",
+                "description": "Page of results to display (500 per page)",
                 "name": "page",
                 "optional": true,
                 "type": "number"
@@ -733,7 +733,7 @@ let data = [
                 "optional": true
             },
             {
-                "description": "Page of results to return (1000 per page)",
+                "description": "Page of results to return (500 per page)",
                 "name": "page",
                 "optional": true,
                 "type": "number"
