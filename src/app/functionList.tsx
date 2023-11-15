@@ -5,7 +5,7 @@ import React from "react";
 
 export default function FunctionList() {
 
-const data = [
+let data = [
     {
         "description": "Get alliance by id.",
         "id": "ALLIANCE",
@@ -189,7 +189,7 @@ const data = [
                 "type": "any"
             },
             {
-                "description": "Location id to filter out results by. Can be a station id or structure id.",
+                "description": "Location id to filter out results by. Can be station id or structure id. Uses final location and location fields to match. If a cell/string is used it will try to convert to a number.",
                 "name": "location_filter",
                 "optional": true,
                 "type": "any"
@@ -295,7 +295,7 @@ const data = [
                 "type": "string"
             },
             {
-                "description": "If omitted, strict = false",
+                "description": "Whether the search should be a strict match. If omitted, strict = false",
                 "name": "strict",
                 "optional": true,
                 "type": "boolean"
@@ -341,7 +341,7 @@ const data = [
         "name": "CORPORATION_CONTRACTS",
         "parameters": [
             {
-                "description": "The character id or entity to be used to select the corporation.",
+                "description": "The character id or entity to be used to select the corporation, required for access reasons.",
                 "name": "character_id_or_entity",
                 "type": "any"
             },
@@ -447,6 +447,12 @@ const data = [
                 "type": "any"
             },
             {
+                "description": "Filter to only display a certain ref type",
+                "name": "ref_type",
+                "optional": true,
+                "type": "string"
+            },
+            {
                 "description": "Page of results to display (1000 per page)",
                 "name": "page",
                 "optional": true,
@@ -517,13 +523,13 @@ const data = [
                 "type": "string"
             },
             {
-                "description": "If omitted, strict = false",
+                "description": "Whether the search should be a strict match. If omitted, strict = false",
                 "name": "strict",
                 "optional": true,
                 "type": "boolean"
             },
             {
-                "description": "Page to display (500 per page). Defaults shows all.",
+                "description": "Page of results to display (500 per page). Defaults shows all.",
                 "name": "page",
                 "optional": true,
                 "type": "number"
@@ -626,13 +632,13 @@ const data = [
                 "type": "string"
             },
             {
-                "description": "If omitted, strict = false",
+                "description": "Whether the search should be a strict match. If omitted, strict = false",
                 "name": "strict",
                 "optional": true,
                 "type": "boolean"
             },
             {
-                "description": "Page to display (500 per page). Defaults shows all.",
+                "description": "Page of results to display (500 per page). Defaults shows all.",
                 "name": "page",
                 "optional": true,
                 "type": "number"
@@ -680,7 +686,7 @@ const data = [
         "name": "CORPORATION_ORDERS",
         "parameters": [
             {
-                "description": "The character id or entity that has access.",
+                "description": "The character id or entity that has access to the corporation orders",
                 "name": "character_id_or_entity",
                 "type": "any"
             }
@@ -695,12 +701,12 @@ const data = [
         "name": "CORPORATION_ORDERS_HISTORY",
         "parameters": [
             {
-                "description": "The character id or entity that has access.",
+                "description": "The character id or entity that has access to the corporation orders",
                 "name": "character_id_or_entity",
                 "type": "any"
             },
             {
-                "description": "Page to display (1000 per page)",
+                "description": "Page of results to display (1000 per page)",
                 "name": "page",
                 "optional": true,
                 "type": "number"
@@ -716,7 +722,7 @@ const data = [
         "name": "CORPORATION_WALLET_TRANSACTIONS",
         "parameters": [
             {
-                "description": "The character id or entity that has access.",
+                "description": "The character id or entity that has access to the corporation wallet transactions",
                 "name": "character_id_or_entity",
                 "type": "any"
             },
@@ -727,7 +733,7 @@ const data = [
                 "optional": true
             },
             {
-                "description": "Page to return (1000 per page)",
+                "description": "Page of results to return (1000 per page)",
                 "name": "page",
                 "optional": true,
                 "type": "number"
@@ -743,7 +749,7 @@ const data = [
         "name": "CORPORATION_WALLET_JOURNAL",
         "parameters": [
             {
-                "description": "The character id or entity that has access",
+                "description": "The character id or entity that has access to the corporation wallet journal",
                 "name": "character_id_or_entity",
                 "type": "any"
             },
@@ -754,7 +760,13 @@ const data = [
                 "optional": true
             },
             {
-                "description": "Page to display (1000 per page)",
+                "description": "Filter to only display a certain ref type",
+                "name": "ref_type",
+                "optional": true,
+                "type": "string"
+            },
+            {
+                "description": "Page of results to display (1000 per page)",
                 "name": "page",
                 "optional": true,
                 "type": "number"
@@ -770,7 +782,7 @@ const data = [
         "name": "CORPORATION_WALLETS",
         "parameters": [
             {
-                "description": "The character id or entity that has access",
+                "description": "The character id or entity that has access to the corporation wallet information",
                 "name": "character_id_or_entity",
                 "type": "any"
             }
@@ -790,7 +802,7 @@ const data = [
                 "type": "number"
             },
             {
-                "description": "Add an array groups in the category.",
+                "description": "Whether the search should include a list of groups in the category. If omitted, strict = false",
                 "name": "expanded",
                 "optional": true,
                 "type": "boolean"
@@ -809,7 +821,7 @@ const data = [
                 "type": "number"
             },
             {
-                "description": "Add an array of types in the group.",
+                "description": "Whether the search should include a list of types in the group. If omitted, strict = false",
                 "name": "expanded",
                 "optional": true,
                 "type": "boolean"
@@ -862,7 +874,7 @@ const data = [
         "name": "INDUSTRYINDEX",
         "parameters": [
             {
-                "description": "The solarsystem id to get indices for, if omitted returns all data",
+                "description": "The solarsystem id to get indices for, if ommitted returns all solar system indices",
                 "name": "solarsystem_id",
                 "type": "number",
                 "optional": true
@@ -884,7 +896,7 @@ const data = [
                 "optional": true
             },
             {
-                "description": "If omitted, strict = false",
+                "description": "Whether the search should be a strict match. If omitted, strict = false",
                 "name": "strict",
                 "optional": true,
                 "type": "boolean"
@@ -906,7 +918,7 @@ const data = [
                 "optional": true
             },
             {
-                "description": "If omitted, strict = false",
+                "description": "Whether the search should be a strict match. If omitted, strict = false",
                 "name": "strict",
                 "optional": true,
                 "type": "boolean"
@@ -978,13 +990,13 @@ const data = [
                 "type": "string"
             },
             {
-                "description": "If omitted, strict = false",
+                "description": "Whether the search should be a strict match. If omitted, strict = false",
                 "name": "strict",
                 "optional": true,
                 "type": "boolean"
             },
             {
-                "description": "If omitted, display_unpublished = false",
+                "description": "Whether the search should display unpublished types. If omitted, display_unpublished = false",
                 "name": "display_unpublished",
                 "optional": true,
                 "type": "boolean"
@@ -1005,7 +1017,7 @@ const data = [
                 "type": "string"
             },
             {
-                "description": "If omitted, strict = false",
+                "description": "Whether the search should be a strict match. If omitted, strict = false",
                 "name": "strict",
                 "optional": true,
                 "type": "boolean"
@@ -1026,7 +1038,7 @@ const data = [
                 "type": "string"
             },
             {
-                "description": "If omitted, strict = false",
+                "description": "Whether the search should be a strict match. If omitted, strict = false",
                 "name": "strict",
                 "optional": true,
                 "type": "boolean"
@@ -1047,7 +1059,7 @@ const data = [
                 "type": "string"
             },
             {
-                "description": "If omitted, strict = false",
+                "description": "Whether the search should be a strict match. If omitted, strict = false",
                 "name": "strict",
                 "optional": true,
                 "type": "boolean"
@@ -1073,14 +1085,13 @@ const data = [
                 "type": "any"
             },
             {
-                "description": "Filter results to only a single station or solarsystem by id (NPC only)",
+                "description": "Station or solarsystem id",
                 "name": "location_id",
                 "type": "number",
                 "optional": true
             }
         ],
-        "result": {
-        }
+        "result": {}
     },
     {
         "description": "Get market orders for a type in a region. Stations and public structures.",
@@ -1129,7 +1140,7 @@ const data = [
                 "type": "any"
             },
             {
-                "description": "How many days to aggregate in a single cell, 1 or TRUE will return the latest date",
+                "description": "How many days to aggregate in a single cell, 1 or TRUE will return the latest data available only for direct usage",
                 "name": "latest_only",
                 "type": "any",
                 "optional": true
@@ -1194,7 +1205,7 @@ const data = [
                 "optional": true
             },
             {
-                "description": "The character id or entity to use for the structure ACL. If omitted uses the first signed in character",
+                "description": "The character id or entity to use for the structure ACL. If ommitted uses the first signed in character",
                 "name": "character_id_or_entity",
                 "type": "any",
                 "optional": true
@@ -1203,6 +1214,30 @@ const data = [
         "result": {
             "dimensionality": "matrix"
         }
+    },
+    {
+        "description": "Get market orders stats for a type in a structure.",
+        "id": "MARKET_STRUCTURE_ORDERS_STATS",
+        "name": "MARKET_STRUCTURE_ORDERS_STATS",
+        "parameters": [
+            {
+                "description": "The structure id",
+                "name": "structure_id",
+                "type": "number"
+            },
+            {
+                "description": "The type id or entity",
+                "name": "type_id_or_entity",
+                "type": "any"
+            },
+            {
+                "description": "The character id or entity to use for the structure ACL. If ommitted uses the first signed in character",
+                "name": "character_id_or_entity",
+                "type": "any",
+                "optional": true
+            }
+        ],
+        "result": {}
     },
     {
         "description": "Get market orders for a type from a structure. Private and public structures. Requires a logged in character for ACL checks. Auto updates every hour. Max 100 _STREAMING functions.",
@@ -1279,6 +1314,7 @@ const data = [
 ]
 
 let dataStrings = ["Show All"];
+data = data.sort((a, b) => a.name.toUpperCase().localeCompare(b.name.toUpperCase()));
 data.map((item) => dataStrings.push(item.name));
 const [value, setValue] = React.useState<string | null>("Show All");
 const [inputValue, setInputValue] = React.useState('Show All');
