@@ -9,6 +9,9 @@ body {
   padding-bottom: 10vh;
   background-image: url('/EXCEL_online_logo.png')
 }
+.infobox {
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity))
+}
 
 .mobileOnly{
   display: none;
@@ -18,5 +21,13 @@ body {
     display:block;
     text-align: center;
     font-weight: bold;
+  }
+}
+@media (prefers-color-scheme: dark){
+  .infobox {
+    background:#000;
+  }
+  .infobox p {
+    color: #FFF;
   }
 }
