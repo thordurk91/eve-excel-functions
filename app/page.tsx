@@ -1,37 +1,79 @@
 import Link from "next/link";
 import { draftMode } from "next/headers";
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import DownloadIcon from '@mui/icons-material/Download';
+import LinkIcon from '@mui/icons-material/Link';
 
 import Date from "./date";
 import CoverImage from "./cover-image";
 import Avatar from "./avatar";
 import MoreStories from "./more-stories";
+import SocialIcons from "./social-icons";
 
 import { getAllPosts } from "@/lib/api";
-import { CMS_NAME, CMS_URL } from "@/lib/constants";
 
 function Intro() {
   return (
     <section className="flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12">
-      <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-tight md:pr-8">
-        Blog.
+      <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-tight md:pr-8 caret-transparent">
+        Eve x Excel.
       </h1>
-      <h2 className="text-center md:text-left text-lg mt-5 md:pl-8">
-        A statically generated blog example using{" "}
-        <a
-          href="https://nextjs.org/"
-          className="underline hover:text-success duration-200 transition-colors"
-        >
-          Next.js
-        </a>{" "}
-        and{" "}
-        <a
-          href={CMS_URL}
-          className="underline hover:text-success duration-200 transition-colors"
-        >
-          {CMS_NAME}
-        </a>
-        .
+      <div className="flex flex-row items-center mt-5 md:pl-8">
+        <SocialIcons />
+      </div>
+    </section>
+  );
+}
+function FunctionsSection() {
+  return (
+    <section className="flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12">
+    <Link href="/functions">
+      <h2 className="mb-8 text-6xl md:text-7xl font-bold leading-tight hover:underline">
+        View available functions <ArrowForwardIcon fontSize="large"/>
       </h2>
+    </Link>
+    </section>
+  );
+}
+
+function Welcome() {
+  return (
+    <section className="mb-20 mt-16">
+      <h2 className="mb-8 text-6xl md:text-8xl font-bold tracking-tighter leading-tight mt-4">Welcome!</h2>
+      <p className="text-2xl">This website contains information about the Eve Addin for Microsoft Excel.</p>
+      <p className="text-2xl mb-4">You can view the full list of available functions, posts about useful techniques and updates alongside links to samples.</p>
+      <p>If you need any help with the addin feel free to hop into #spreadsheets on the <Link href="https://discord.com/invite/eveonline" className="hover:underline">official Eve discord</Link></p>
+    </section>
+  )
+}
+
+function Requirements() {
+  return (
+    <section className="grid md:grid-cols-2 mt-16 mb-16 md:mb-28">
+      <div>
+        <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
+          Requirements
+        </h2>
+        <div className="ml-2 text-2xl">
+          <p className="mb-2">Supported versions of Excel</p>
+          <ul className="list-disc ml-2 mb-3 pl-4">
+            <li className="ml-1 pl-1">Desktop: Microsoft Office M365</li>
+            <li className="ml-1 pl-1">Web: Microsoft account for the free Excel Web</li>
+          </ul>
+          <p>Retail versions of Excel are <u>not supported</u></p>
+        </div>
+      </div>
+      <div className="flex flex-col">
+        <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
+          Examples
+        </h2>
+        <Link className="hover:underline text-2xl mb-2" href="https://web.ccpgamescdn.com/aws/eveonline/files/EVE_x_MS_Excel-workbook-sample.xlsx">
+          <DownloadIcon className="mr-2"/>Initial release sample sheet
+        </Link>
+        <Link className="hover:underline text-2xl mb-2" href="https://1drv.ms/x/c/dcb7d3a74e9f696e/EQs193BZsGpBgWtUkwZkBuQB8q7gD_j4rwIJsU0RwxHbUQ?e=hSFnTc">
+          <LinkIcon className="mr-2" />Blueprint and personal stocks
+        </Link>
+      </div>
     </section>
   );
 }
@@ -53,11 +95,14 @@ function HeroPost({
 }) {
   return (
     <section>
-      <div className="mb-8 md:mb-16">
-        <CoverImage title={title} slug={slug} url={coverImage.url} />
-      </div>
-      <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28">
-        <div>
+      <h2 className="mb-8 text-4xl md:text-6xl font-bold tracking-tighter leading-tight mt-4">
+        Latest Post
+      </h2>
+      <div className="flex md:flex-row md:justify-between mb-16 md:mb-20">
+        <div className="mr-4">
+          <CoverImage title={title} slug={slug} url={coverImage.url} />
+        </div>
+        <div className="ml-4 mr-4">
           <h3 className="mb-4 text-4xl lg:text-6xl leading-tight">
             <Link href={`/posts/${slug}`} className="hover:underline">
               {title}
@@ -66,10 +111,12 @@ function HeroPost({
           <div className="mb-4 md:mb-0 text-lg">
             <Date dateString={date} />
           </div>
+          <div>
+            <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
+            {author && <Avatar name={author.name} picture={author.picture} />}
+          </div>
         </div>
         <div>
-          <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-          {author && <Avatar name={author.name} picture={author.picture} />}
         </div>
       </div>
     </section>
@@ -83,19 +130,22 @@ export default async function Page() {
   const morePosts = allPosts.slice(1);
 
   return (
-    <div className="container mx-auto px-5">
-      <Intro />
-      {heroPost && (
-        <HeroPost
-          title={heroPost.title}
-          coverImage={heroPost.coverImage}
-          date={heroPost.date}
-          author={heroPost.author}
-          slug={heroPost.slug}
-          excerpt={heroPost.excerpt}
-        />
-      )}
-      <MoreStories morePosts={morePosts} />
-    </div>
+      <div className="container mx-auto px-5">
+        <Intro />
+        <Welcome />
+        <FunctionsSection />
+        <Requirements />
+        {heroPost && (
+          <HeroPost
+            title={heroPost.title}
+            coverImage={heroPost.coverImage}
+            date={heroPost.date}
+            author={heroPost.author}
+            slug={heroPost.slug}
+            excerpt={heroPost.excerpt}
+          />
+        )}
+        <MoreStories morePosts={morePosts} />
+      </div>
   );
 }
