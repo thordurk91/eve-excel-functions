@@ -38,18 +38,15 @@ return (
                     aria-controls={`panel${i}a-content`}
                     id={`panel${1}a-header`}
                 >
-                    {item.name}(
-                        
-                        {item.parameters &&
-                            item.parameters.map((parameter: { name: string | number | bigint | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | Promise<React.AwaitedReactNode> | null | undefined; }, i: any) => {
-                                if(i > 0) return <span key={i}>,{parameter.name}</span>
-                                else return <span key={i}>{parameter.name}</span>
-                            })
-                        }
-                        )
+                    {item.name}
                 </AccordionSummary>
                 <AccordionDetails>
                     <p className="mb-1 max-w-screen-md">{item.description}</p>
+                    {item.parameters.length ?
+                    (
+                        <b>Parameters:</b>
+                    ) : null
+                    }
                     {item.parameters &&
                             item.parameters.map((parameter: any, i: React.Key | null | undefined) => (
                             <Card variant="outlined" key={i} className="px-3 py-2">

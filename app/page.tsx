@@ -3,6 +3,7 @@ import { draftMode } from "next/headers";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import DownloadIcon from '@mui/icons-material/Download';
 import LinkIcon from '@mui/icons-material/Link';
+import Paper from '@mui/material/Paper';
 
 import Date from "./date";
 import CoverImage from "./cover-image";
@@ -28,7 +29,7 @@ function FunctionsSection() {
   return (
     <section className="flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12">
     <Link href="/functions">
-      <h2 className="mb-8 text-6xl md:text-7xl font-bold leading-tight hover:underline">
+      <h2 className="mb-8 text-6xl md:text-7xl font-bold leading-tight transition-transform	hover:translate-x-2">
         View available functions <ArrowForwardIcon fontSize="large"/>
       </h2>
     </Link>
@@ -38,19 +39,21 @@ function FunctionsSection() {
 
 function Welcome() {
   return (
-    <section className="mb-20 mt-16">
+    <Paper>
+    <section className="mb-20 mt-16 p-8">
       <h2 className="mb-8 text-6xl md:text-8xl font-bold tracking-tighter leading-tight mt-4">Welcome!</h2>
       <p className="text-2xl">This website contains information about the Eve Addin for Microsoft Excel.</p>
       <p className="text-2xl mb-4">You can view the full list of available functions, posts about useful techniques and updates alongside links to samples.</p>
-      <p>If you need any help with the addin feel free to hop into #spreadsheets on the <Link href="https://discord.com/invite/eveonline" className="hover:underline">official Eve discord</Link></p>
+      <p>If you need any help with the addin feel free to hop into #spreadsheets on the <Link href="https://discord.com/invite/eveonline" className="underline hover:decoration-2">official Eve discord</Link></p>
     </section>
+    </Paper>
   )
 }
 
 function Requirements() {
   return (
-    <section className="grid md:grid-cols-2 mt-16 mb-16 md:mb-28">
-      <div>
+    <section className="grid md:grid-cols-2 mt-16 mb-16 md:mb-28 gap-2">
+      <Paper className="p-6">
         <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
           Requirements
         </h2>
@@ -62,7 +65,8 @@ function Requirements() {
           </ul>
           <p>Retail versions of Excel are <u>not supported</u></p>
         </div>
-      </div>
+      </Paper>
+      <Paper className="p-6">
       <div className="flex flex-col">
         <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
           Examples
@@ -74,6 +78,7 @@ function Requirements() {
           <LinkIcon className="mr-2" />Blueprint and personal stocks
         </Link>
       </div>
+      </Paper>
     </section>
   );
 }
@@ -98,12 +103,12 @@ function HeroPost({
       <h2 className="mb-8 text-4xl md:text-6xl font-bold tracking-tighter leading-tight mt-4">
         Latest Post
       </h2>
-      <div className="flex md:flex-row md:justify-between mb-16 md:mb-20">
-        <div className="mr-4">
+      <div className="flex md:flex-row mb-16 md:mb-20">
+        <div className="mr-2">
           <CoverImage title={title} slug={slug} url={coverImage.url} />
         </div>
         <div className="ml-4 mr-4">
-          <h3 className="mb-4 text-4xl lg:text-6xl leading-tight">
+          <h3 className="mb-4 text-4xl lg:text-4xl leading-tight">
             <Link href={`/posts/${slug}`} className="hover:underline">
               {title}
             </Link>
