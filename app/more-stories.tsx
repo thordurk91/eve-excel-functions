@@ -2,9 +2,6 @@
 import Link from "next/link";
 import DateComponent from "./date";
 import Paper from '@mui/material/Paper';
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/pagination';
 
 function PostPreview({
   title,
