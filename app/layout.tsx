@@ -26,7 +26,7 @@ function Footer() {
           <h3 className="text-4xl lg:text-5xl font-bold tracking-tighter leading-tight text-center lg:text-left mb-10 lg:mb-0 lg:pr-4 lg:w-1/2">
             Built with Next.js.
           </h3>
-          <div>
+          <div className="flex justify-center">
             <SocialIcons />
           </div>
         </div>
