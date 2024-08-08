@@ -3,6 +3,7 @@ import { Accordion, AccordionDetails, AccordionSummary, Autocomplete, Card, Text
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React from "react";
 import { function_data } from "../lib/data"
+import CopyToClipboard from "@/components/copy-paste";
 
 export default function FunctionList() {
 
@@ -41,10 +42,11 @@ return (
                     {item.name}
                 </AccordionSummary>
                 <AccordionDetails>
-                    <p className="mb-1 max-w-screen-md">{item.description}</p>
+                    <p className="mb-1 max-w-screen-md">{item.description} </p>
+                    <CopyToClipboard parameters={item} /> 
                     {item.parameters.length ?
                     (
-                        <b>Parameters:</b>
+                        <p>Parameters:</p>
                     ) : null
                     }
                     {item.parameters &&
