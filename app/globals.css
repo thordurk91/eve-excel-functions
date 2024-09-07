@@ -11,3 +11,8 @@
 .prose-invert p{
     margin-bottom: 0.5rem;
 }
+
+.prose-invert a{
+    text-decoration: underline;
+    color: rgb(75, 194, 75);
+}

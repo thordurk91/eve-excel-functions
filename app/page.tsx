@@ -10,8 +10,10 @@ import CoverImage from "./cover-image";
 import Avatar from "./avatar";
 import MoreStories from "./more-stories";
 import SocialIcons from "./social-icons";
+import NextLink from "next/link"
 
 import { getAllPosts } from "@/lib/api";
+import { Button } from "@mui/material";
 
 function Intro() {
   return (
@@ -28,11 +30,9 @@ function Intro() {
 function FunctionsSection() {
   return (
     <section className="flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12">
-    <Link href="/functions">
-      <h2 className="mb-8 text-2xl md:text-6xl font-bold leading-tight transition-transform	hover:translate-x-2">
-        View available functions <ArrowForwardIcon fontSize="large"/>
-      </h2>
-    </Link>
+    <Button sx={{fontSize: "1.3rem"}} passHref href="/functions" component={NextLink} size="large" color="success" variant="outlined" endIcon={<ArrowForwardIcon fontSize="large"/>}>
+        View available functions
+    </Button>
     </section>
   );
 }
@@ -64,6 +64,7 @@ function Requirements() {
             <li className="ml-1 pl-1">Web: Microsoft account for the free Excel Web</li>
           </ul>
           <p className="text-lg">Retail versions of Excel are <u>not supported</u></p>
+          <p className="text-sm">Note that large sheets and asset function can perform poorly on Excel Web. (We hoard too much stuff!)</p>
         </div>
       </Paper>
       <Paper className="p-6">
@@ -72,10 +73,10 @@ function Requirements() {
           Examples
         </h2>
         <Link className="hover:underline text-xl md:text-2xl mb-2" href="https://web.ccpgamescdn.com/aws/eveonline/files/EVE_x_MS_Excel-workbook-sample.xlsx">
-          <DownloadIcon className="mr-2"/>Initial release sample sheet
+          <DownloadIcon className="mr-2"/>Initial release sample sheet (Desktop version)
         </Link>
         <Link className="hover:underline text-xl md:text-2xl mb-2" href="https://1drv.ms/x/c/dcb7d3a74e9f696e/EQs193BZsGpBgWtUkwZkBuQB8q7gD_j4rwIJsU0RwxHbUQ?e=hSFnTc">
-          <LinkIcon className="mr-2" />Blueprint and personal stocks
+          <LinkIcon className="mr-2" />Blueprint and personal stocks (Web)
         </Link>
       </div>
       </Paper>
