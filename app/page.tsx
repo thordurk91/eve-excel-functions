@@ -60,10 +60,10 @@ function Requirements() {
         <div className="ml-2 text-xl md:text-2xl">
           <p className="mb-2">Supported versions of Excel</p>
           <ul className="list-disc ml-2 mb-3 pl-4">
-            <li className="ml-1 pl-1">Desktop: Microsoft Office M365</li>
+            <li className="ml-1 pl-1">Desktop: Microsoft Office <b>M365</b></li>
             <li className="ml-1 pl-1">Web: Microsoft account for the free Excel Web</li>
           </ul>
-          <p className="text-lg">Retail versions of Excel are <u>not supported</u></p>
+          <p className="text-lg">Retail versions of Excel(2019, 2021, 2024 etc.) are <u>not supported</u></p>
           <p className="text-sm">Note that large sheets and asset function can perform poorly on Excel Web. (We hoard too much stuff!)</p>
         </div>
       </Paper>
