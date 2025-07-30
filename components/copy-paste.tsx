@@ -14,7 +14,7 @@ function CopyToClipboard(parameters: any) {
     let content = "=EVEONLINE." + parameters.parameters.name + '(';
     let variables = "";
     if(!parameters.parameters.parameters.length) return <></>
-    variables = parameters.parameters.parameters.map((parameter: { optional: boolean, name: string | number | bigint | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | Promise<React.AwaitedReactNode> | null | undefined; }, i: any) => {
+    variables = parameters.parameters.parameters.map((parameter: { optional: boolean, name: string | number | bigint | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined; }, i: any) => {
         return (parameter.optional ? '[' : '') + parameter.name + (parameter.optional ? ']' : '')
     })
     content += variables + ')';

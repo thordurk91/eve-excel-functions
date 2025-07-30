@@ -16,13 +16,15 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function PostPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const { isEnabled } = draftMode();
-  const { post, morePosts } = await getPostAndMorePosts(params.slug, isEnabled);
+interface PostPageProps {
+  params: Promise<{ slug: string }>;
+}
+
+export default async function PostPage({ params }: PostPageProps) {
+  // Await the params in Next.js 15
+  const { slug } = await params;
+  const { isEnabled } = await draftMode();
+  const { post, morePosts } = await getPostAndMorePosts(slug, isEnabled);
 
   return (
     <div className="container mx-auto px-5">
