@@ -7,7 +7,6 @@ import Paper from '@mui/material/Paper';
 
 import Date from "./date";
 import CoverImage from "./cover-image";
-import Avatar from "./avatar";
 import MoreStories from "./more-stories";
 import SocialIcons from "./social-icons";
 import NextLink from "next/link"
@@ -129,7 +128,7 @@ function HeroPost({
 }
 
 export default async function Page() {
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode()
   const allPosts = await getAllPosts(isEnabled);
   const heroPost = allPosts[0];
   const morePosts = allPosts.slice(1);

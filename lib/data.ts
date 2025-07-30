@@ -1324,41 +1324,6 @@ export const function_data = [
         "result": {}
     },
     {
-        "description": "Get market orders for a type in a region. Stations and public structures. Auto updates every hour. Max 100 _STREAMING functions.",
-        "id": "MARKET_ORDERS_STREAMING",
-        "name": "MARKET_ORDERS_STREAMING",
-        "options": {
-            "stream": true
-        },
-        "parameters": [
-            {
-                "description": "The region id",
-                "name": "region_id",
-                "type": "number"
-            },
-            {
-                "description": "The type id",
-                "name": "type_id",
-                "type": "any"
-            },
-            {
-                "description": "Only show sell if TRUE, only show buy if FALSE, both if left empty",
-                "name": "sell_buy_only_boolean",
-                "type": "boolean",
-                "optional": true
-            },
-            {
-                "description": "Location id filter for the orders",
-                "name": "location_id",
-                "type": "number",
-                "optional": true
-            }
-        ],
-        "result": {
-            "dimensionality": "matrix"
-        }
-    },
-    {
         "description": "Get market orders for a type from a structure. Private and public structures. Requires a logged in character for ACL checks.",
         "id": "MARKET_STRUCTURE_ORDERS",
         "name": "MARKET_STRUCTURE_ORDERS",
@@ -1413,41 +1378,6 @@ export const function_data = [
             }
         ],
         "result": {}
-    },
-    {
-        "description": "Get market orders for a type from a structure. Private and public structures. Requires a logged in character for ACL checks. Auto updates every hour. Max 100 _STREAMING functions.",
-        "id": "MARKET_STRUCTURE_ORDERS_STREAMING",
-        "name": "MARKET_STRUCTURE_ORDERS_STREAMING",
-        "options": {
-            "stream": true
-        },
-        "parameters": [
-            {
-                "description": "The structure id",
-                "name": "structure_id",
-                "type": "number"
-            },
-            {
-                "description": "The type id",
-                "name": "type_id",
-                "type": "any"
-            },
-            {
-                "description": "Only show sell if TRUE, only show buy if FALSE, both if left empty",
-                "name": "sell_buy_only_boolean",
-                "type": "boolean",
-                "optional": true
-            },
-            {
-                "description": "The character id or entity to use for the structure ACL. If ommitted uses the first signed in character",
-                "name": "character_id_or_entity",
-                "type": "any",
-                "optional": true
-            }
-        ],
-        "result": {
-            "dimensionality": "matrix"
-        }
     },
     {
         "description": "List all wars",

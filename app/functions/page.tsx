@@ -20,7 +20,7 @@ export default function Home({allPostsData} : any) {
             </div>
             <div className="infobox rounded-xl flex-col z-10 w-auto items-center justify-center font-mono text-sm lg:flex mt-4 flex justify-center border border-gray-300 pb-6 px-6 pt-8 backdrop-blur-2xl">
                 <p>
-                Eve x Excel functions parameters 1.7
+                Eve x Excel functions parameters 1.8
                 </p>
                 <br></br>
                 <p>

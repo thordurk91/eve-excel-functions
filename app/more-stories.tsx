@@ -17,7 +17,7 @@ function PostPreview({
 }) {
   return (
     <div>
-      <h3 className="text-xl md:text-3xl mb-3 leading-snug">
+      <h3 className="text-xl md:text-3xl mb-3 leading-snug overflow-clip">
         <Link href={`/posts/${slug}`} className="hover:underline">
           {title}
         </Link>
@@ -37,7 +37,7 @@ export default function MoreStories({ morePosts }: { morePosts: any[] }) {
       </h2>
       <div className="mb-32 grid grid-cols-1 md:grid-cols-3 gap-0 md-gap-2">
         {morePosts.map((post) => (
-          <Paper className="p-4 mr-2 mb-2">
+          <Paper className="p-4 mr-2 mb-2" key={post.title}>
             <PostPreview
               key={post.slug}
               title={post.title}
