@@ -38,7 +38,7 @@ function FunctionsSection() {
 
 function Welcome() {
   return (
-    <Paper>
+    <Paper sx={{borderRadius:2}}>
     <section className="mb-20 mt-16 p-8">
       <h2 className="mb-8 text-6xl md:text-8xl font-bold tracking-tighter leading-tight mt-4">Welcome!</h2>
       <p className="text-xl md:text-2xl mb-4 md:mb-0">This website contains information about the Eve Addin for Microsoft Excel.</p>
@@ -100,7 +100,7 @@ function HeroPost({
 }) {
   return (
     <section className="mb-16 md:mb-20">
-      <h2 className="mb-8 text-4xl md:text-6xl font-bold tracking-tighter leading-tight mt-4">
+      <h2 className="mb-8 text-4xl md:text-6xl font-bold tracking-tight leading-tight mt-4">
         Latest Post
       </h2>
       

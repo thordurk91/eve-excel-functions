@@ -16,13 +16,13 @@ function PostPreview({
   slug: string;
 }) {
   return (
-    <div>
+    <div className="flex flex-col h-full min-h-36">
       <h3 className="text-xl md:text-3xl mb-3 leading-snug overflow-clip">
         <Link href={`/posts/${slug}`} className="hover:underline">
           {title}
         </Link>
       </h3>
-      <div className="text-lg mb-4 italic">
+      <div className="text-md mb-4 mt-auto">
         <DateComponent dateString={date} />
       </div>
     </div>
@@ -32,7 +32,7 @@ function PostPreview({
 export default function MoreStories({ morePosts }: { morePosts: any[] }) {
   return (
     <section>
-      <h2 className="mb-8 text-4xl md:text-5xl font-bold tracking-tighter leading-tight">
+      <h2 className="mb-8 text-4xl md:text-5xl font-bold tracking-tight leading-tight">
         More Posts
       </h2>
       <div className="mb-32 grid grid-cols-1 md:grid-cols-3 gap-0 md-gap-2">
